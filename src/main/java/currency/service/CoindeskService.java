@@ -21,15 +21,20 @@ import java.util.Optional;
 public class CoindeskService {
     private final CurrencyRepository currencyRepository;
     private final RestTemplate restTemplate;
-    private static final String COINDESK_URL = "https://kengp3.github.io/blog/coindesk.json";
+    private static final String COINDESK_URL = "https://kengp3.github.io/blog/coindesk.jsodddn";
 
     public CoindeskService(CurrencyRepository currencyRepository, RestTemplate restTemplate) {
         this.currencyRepository = currencyRepository;
         this.restTemplate = restTemplate;
     }
 
-    public CryptoResponse getCoindeskRate() {
+    public CoindeskResponse getCoindeskRate() {
+        return restTemplate.getForObject(COINDESK_URL, CoindeskResponse.class);
+    }
+
+    public CryptoResponse getCryptoRate() {
         CoindeskResponse coindeskResponse = restTemplate.getForObject(COINDESK_URL, CoindeskResponse.class);
+        assert coindeskResponse != null;
         return convertCoindeskToResponse(coindeskResponse);
     }
 

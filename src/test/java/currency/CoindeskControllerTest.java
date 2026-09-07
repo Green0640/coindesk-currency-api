@@ -37,8 +37,6 @@ public class CoindeskControllerTest {
     @MockBean
     private CurrencyRepository currencyRepository;
 
-    private final String url = "https://kengp3.github.io/blog/coindesk.json";
-
     @Test
     void getCryptoRate() throws Exception {
         CoindeskResponse response = new CoindeskResponse();
@@ -53,6 +51,7 @@ public class CoindeskControllerTest {
         usd.setRate_float(57756.2984);
         bpi.put("USD", usd);
         response.setBpi(bpi);
+        String url = "https://kengp3.github.io/blog/coindesk.json";
 
         when(restTemplate.getForObject(eq(url), eq(CoindeskResponse.class))).thenReturn(response);
 
@@ -62,7 +61,7 @@ public class CoindeskControllerTest {
 
         when(currencyRepository.findByCurrencyCode("USD")).thenReturn(Optional.of(currency));
 
-        mockMvc.perform(get("/api/coindesk"))
+        mockMvc.perform(get("/api/coindesk/crypto"))
                 .andDo(org.springframework.test.web.servlet.result.MockMvcResultHandlers.print())
 
                 // HTTP

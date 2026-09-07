@@ -1,5 +1,6 @@
 package currency.controller;
 
+import currency.dto.CoindeskResponse;
 import currency.dto.CryptoResponse;
 import currency.service.CoindeskService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,12 @@ public class CoindeskController {
     }
 
     @GetMapping
-    public CryptoResponse getCryptoRate() {
+    public CoindeskResponse getCoindeskRate() {
         return coindeskService.getCoindeskRate();
+    }
+
+    @GetMapping("/crypto")
+    public CryptoResponse getCryptoRate() {
+        return coindeskService.getCryptoRate();
     }
 }
