@@ -21,7 +21,7 @@ import java.util.Optional;
 public class CoindeskService {
     private final CurrencyRepository currencyRepository;
     private final RestTemplate restTemplate;
-    private static final String COINDESK_URL = "https://kengp3.github.io/blog/coindesk.jsodddn";
+    private static final String COINDESK_URL = "https://kengp3.github.io/blog/coindesk.json";
 
     public CoindeskService(CurrencyRepository currencyRepository, RestTemplate restTemplate) {
         this.currencyRepository = currencyRepository;

@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//測試呼叫 coindesk API，並顯示其內容。
 class CoindeskApiTest {
 
     private final RestTemplate restTemplate = new RestTemplate();
